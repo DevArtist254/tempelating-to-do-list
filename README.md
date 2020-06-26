@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Daily Organiser To Do List
     <br> 
 </p>
 
@@ -34,37 +34,35 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+I am creating this project to be my daily organiser as my to do list
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+First start by creating server using  
+[Express] - Server Framework and using [NodeJs] - Server Environment for our environment
+then create a views directory with a file list.ejs in order to start using [EJs] - templating framework  
+. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them.
 
 ```
-Give examples
+npm init
+
+npm i express nodemon ejs body-parser
 ```
 
-### Installing
+### Running The Server
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+After writing "start": "nodemon app.js" in our package.json
+we can run
 
 ```
-until finished
+npm run start
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+in our terminal the after the server is created a message will appear on the console that our server has started
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
@@ -88,7 +86,7 @@ Give an example
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+Now we are going to create a program that will display html info as
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
@@ -98,12 +96,11 @@ Add additional notes about how to deploy this on a live system.
 
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@DevArtist254](https://github.com/kylelobo) - Idea & Initial work
 
 See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
 
