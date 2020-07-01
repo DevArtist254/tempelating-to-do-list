@@ -8,7 +8,23 @@
 </head>
 
 <body>
-    <h1>the day today is <%= kindOfDay %></h1>
+    <!--2.2-->
+    <h1><%= kindOfDay %></h1>
+
+    <!--Create a new list-->
+    <ul>
+        <!--3.35-->
+        <% for(let i = 0; i < newitem.length; i++) {%>
+        <li> <%= newitem[i] %> </li>
+        <% } %>
+    </ul>
+
+
+    <!--this form helps use to collect data from the user-->
+    <form action="/" method="POST">
+        <input type="text" name="nameItem">
+        <button type="submit" name="button">Add</button>
+    </form>
 </body>
 
 </html>

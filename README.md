@@ -64,29 +64,40 @@ npm run start
 
 in our terminal the after the server is created a message will appear on the console that our server has started
 
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## 🎈 Usage <a name="usage"></a>
 
-Now we are going to create a program that will display html info as
+1. Create our server by installing [Prerequisites]
+
+- 1.0 set up our express npm package and store it in app variable
+- 1.1 import all our npm packages as constants
+- 1.2 create a listening port with the listen method
+- 1.21 it takes two params 1st the listening port 2nd our callback function which allows us to when our server is running
+
+2.  form our ejs environment thru our get method
+
+- 2.0 first set our ejs engine with the set method which takes to parameters strings view engine and ejs
+- 2.1 set up our get method which takes two parameters our home route and call back fn which uses two arguments res(respond) , request (req)
+- 2.2 inside our get method we are going to set up our current time and date using our new Date()
+- 2.21 we can extract our day with toLocaleDateString method which takes two parameters language and options which should have been preformed
+- 2.22 our options obj which is used to extract day, month and weekday for more info check documentation
+- 2.3 the respond(res) to our sever with the data using render method which takes two parameters
+- and they are
+- 2.31 "list" string which represents where our ejs file location which should be in the /VIEWS/\*.ejs
+- 2.32 second use it to render to our list ejs with our key value pair
+- key - the value that will be used in ejs to represent data in our ejs file
+- value - is a variable that stores data from our servers
+
+3.  In this step we are going to form a data collection which will be displayed as a list
+
+- 3.0 first we should use our body parser to retrive data from our form
+- 3.1 set up our post method which takes two parameters our home route and call back fn which uses two arguments res(respond) , request (req)
+- 3.30 form an empty array
+- 3.31 then receive(req) the data from our body html and store them in our variables
+- 3.32 we are going to send(push()) the data in our gobal collections array
+- 3.33 then redirect it to our home route
+- note Because we can access it becoz of block scoping we have to redirect the data to our list but first pre render it in a data collection ie an array then sending our data to that array in our goble variable
+- 3.34 then store var and use it as a key to reflect into our value
+- 3.35 use the newly formed data to loop it thru our list
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
