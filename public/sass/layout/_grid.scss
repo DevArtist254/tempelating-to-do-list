@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 108rem;
+    height: 100vh;
+
+    &__nav {
+        padding: 3.9rem 7.2rem 10.5rem 7.2rem;
+        width: 100%;
+    }
+
+    &__content {
+        margin: 10.1rem 9.4rem 9.4rem 9.2rem;
+        width: inherit;
+    }
+
+    &__footer {
+        margin-top: 9.4rem;
+        width: inherit;
+    }
+}

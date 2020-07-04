@@ -1,0 +1,17 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 9.3rem;
+
+    &__logo {
+        flex-basis: 20.7rem;
+    }
+
+    &__list {
+        flex-basis: 36.9rem;
+        margin-right: 2.1rem;
+    }
+}

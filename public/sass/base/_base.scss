@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    background-image: url(img/Rectangle-5.jpg);
+    //width height
+    background-size: 61% 100%;
+    background-repeat: no-repeat;
+}

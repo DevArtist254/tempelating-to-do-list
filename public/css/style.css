@@ -1,2 +1,44 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  background-image: url(img/Rectangle-5.jpg);
+  background-size: 61% 100%;
+  background-repeat: no-repeat; }
+
+/*
+   font-family: 'Orbitron', sans-serif;
+    font-family: 'Roboto', sans-serif;
+*/
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 9.3rem; }
+  .nav__logo {
+    flex-basis: 20.7rem; }
+  .nav__list {
+    flex-basis: 36.9rem;
+    margin-right: 2.1rem; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 108rem;
+  height: 100vh; }
+  .container__nav {
+    padding: 3.9rem 7.2rem 10.5rem 7.2rem;
+    width: 100%; }
+  .container__content {
+    margin: 10.1rem 9.4rem 9.4rem 9.2rem;
+    width: inherit; }
+  .container__footer {
+    margin-top: 9.4rem;
+    width: inherit; }
