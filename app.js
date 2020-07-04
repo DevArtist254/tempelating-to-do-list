@@ -9,6 +9,9 @@ let items = []
 //1.0
 const app = express()
 
+//1.01
+app.use(express.static("public"))
+
 //2.0
 app.set("view engine", "ejs")
 
@@ -50,6 +53,11 @@ app.post("/", (req, res) => {
   //3.33
   res.redirect("/")
   console.log(item)
+})
+
+//4
+app.get("/about", (req, res) => {
+  res.render("about")
 })
 
 //1.2

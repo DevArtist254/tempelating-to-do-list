@@ -99,6 +99,8 @@ in our terminal the after the server is created a message will appear on the con
 - 3.34 then store var and use it as a key to reflect into our value
 - 3.35 use the newly formed data to loop it thru our list
 
+4. Forming more routes for my pages
+
 ## 🚀 Deployment <a name = "deployment"></a>
 
 Add additional notes about how to deploy this on a live system.

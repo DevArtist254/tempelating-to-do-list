@@ -7,24 +7,42 @@
     <title>List</title>
 </head>
 
+<link rel="stylesheet" href="css/style.css">
+
 <body>
-    <!--2.2-->
-    <h1><%= kindOfDay %></h1>
+    <!--navigation-->
+    <%- include('nav'); -%>
 
-    <!--Create a new list-->
-    <ul>
-        <!--3.35-->
-        <% for(let i = 0; i < newitem.length; i++) {%>
-        <li> <%= newitem[i] %> </li>
-        <% } %>
-    </ul>
+    <div class="sect-form">
+        <!--this form helps use to collect data from the user-->
+        <form action="/" method="POST" class="form">
+            <input type="text" name="nameItem" class="form__input">
+            <button type="submit" name="button" class="form__btn">Add</button>
+        </form>
+    </div>
 
+    <!--to do list-->
 
-    <!--this form helps use to collect data from the user-->
-    <form action="/" method="POST">
-        <input type="text" name="nameItem">
-        <button type="submit" name="button">Add</button>
-    </form>
+    <div class="sect-card">
+        <!--2.2-->
+        <h2><%= kindOfDay %>'s Plans</h2>
+        <div class="card">
+            <!--Create a new list-->
+            <ul class="card__list">
+                <!--3.35-->
+                <% for(let i = 0; i < newitem.length; i++) {%>
+                <li class="card__item">
+                    <input type="checkbox">
+                    <p class="card__p"><%= newitem[i] %> </p>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+    <!--footer-->
+    <%- include('footer'); -%>
+
 </body>
 
 </html>
