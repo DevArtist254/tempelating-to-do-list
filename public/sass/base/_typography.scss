@@ -2,3 +2,35 @@
    font-family: 'Orbitron', sans-serif;
     font-family: 'Roboto', sans-serif;
 */
+
+.heading-1 {
+    font-family: var(--fam-1);
+    font-style: normal;
+    font-weight: normal;
+    font-size: $fs-largest;
+    line-height: 100.4%;
+}
+
+.heading-2 {
+    font-family: var(--fam-1);
+    font-style: normal;
+    font-weight: bold;
+    font-size: $fs-large;
+    line-height: 9.4rem;
+}
+
+.logo {
+    font-family: var(--fam-1);
+    font-style: normal;
+    font-weight: normal;
+    font-size: $fs-small;
+    line-height: 3.1rem;
+}
+
+.text {
+    font-family: var(--fam-2);
+    font-style: normal;
+    font-weight: normal;
+    font-size: $fs-small;
+    line-height: 3.3rem;
+}

@@ -1,3 +1,18 @@
+:root {
+  --color-primary: #eb2f64;
+  --color-secondary: #CCA929;
+  --color-white: #ffffff;
+  --color-grey-light-1: #f4f2f2;
+  --color-grey-light-2: #eeeeee;
+  --color-grey-light-3: #ccc;
+  --color-dark: #000000;
+  --color-lighter-dark: #121211;
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+  --fam-1: 'Orbitron', sans-serif;
+  --fam-2: 'Roboto', sans-serif;
+  --line: 1px solid var(--color-grey-light-2); }
+
 *,
 *::before,
 *::after {
@@ -7,25 +22,74 @@
 
 html {
   font-size: 62.5%;
-  background-image: url(img/Rectangle-5.jpg);
-  background-size: 61% 100%;
+  background-image: url(img/Rectangle-6.jpg);
+  background-size: 61% 150%;
   background-repeat: no-repeat; }
 
 /*
    font-family: 'Orbitron', sans-serif;
     font-family: 'Roboto', sans-serif;
 */
+.heading-1 {
+  font-family: var(--fam-1);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10rem;
+  line-height: 100.4%; }
+
+.heading-2 {
+  font-family: var(--fam-1);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 7.5rem;
+  line-height: 9.4rem; }
+
+.logo {
+  font-family: var(--fam-1);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5rem;
+  line-height: 3.1rem; }
+
+.text {
+  font-family: var(--fam-2);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5rem;
+  line-height: 3.3rem; }
+
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--color-dark);
   height: 9.3rem; }
   .nav__logo {
-    flex-basis: 20.7rem; }
+    flex-basis: 22.7rem;
+    display: inline-block;
+    color: var(--color-secondary); }
+    .nav__logo-dark {
+      opacity: 1;
+      color: inherit; }
+    .nav__logo-light {
+      opacity: 0.5;
+      color: inherit; }
   .nav__list {
     flex-basis: 36.9rem;
-    margin-right: 2.1rem; }
+    margin-right: 2.1rem;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none; }
+    .nav__list-link:link, .nav__list-link:visited {
+      color: var(--color-white);
+      border: none;
+      text-decoration: none;
+      padding: 3.1rem 0 2.4rem 0;
+      transition: all .5s; }
+    .nav__list-link:hover, .nav__list-link:active {
+      color: inherit;
+      border-bottom: 2px solid var(--color-white); }
 
 .container {
   display: flex;

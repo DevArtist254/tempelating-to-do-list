@@ -1,17 +1,52 @@
 .nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-dark);
+
+  height: 9.3rem;
+
+  &__logo {
+    flex-basis: 22.7rem;
+    display: inline-block;
+    color: var(--color-secondary);
+
+    &-dark {
+      opacity: 1;
+      color: inherit;
+    }
+
+    &-light {
+      opacity: 0.5;
+      color: inherit;
+    }
+  }
+
+  &__list {
+    flex-basis: 36.9rem;
+    margin-right: 2.1rem;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 
-    height: 9.3rem;
+    list-style-type: none;
 
-    &__logo {
-        flex-basis: 20.7rem;
+    &-link {
+
+      &:link,
+      &:visited {
+        color: var(--color-white);
+        border: none;
+        text-decoration: none;
+        padding: 3.1rem 0 2.4rem 0;
+        transition: all .5s;
+      }
+
+      &:hover,
+      &:active {
+        color: inherit;
+        border-bottom: 2px solid var(--color-white);
+      }
     }
-
-    &__list {
-        flex-basis: 36.9rem;
-        margin-right: 2.1rem;
-    }
+  }
 }
