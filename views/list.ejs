@@ -14,7 +14,7 @@
     <%- include('nav'); -%>
 
     <div class="container__content">
-        <div class="sect-form">
+        <div class="container__content-form">
             <!--this form helps use to collect data from the user-->
             <form action="/" method="POST" class="form">
                 <input type="text" name="nameItem" class="form__input">
@@ -24,17 +24,18 @@
 
         <!--to do list-->
 
-        <div class="sect-card">
-            <!--2.2-->
-            <h2 class="heading-2 "><%= kindOfDay %>'s Plans</h2>
+        <div class="container__content-card">
             <div class="card">
+                <!--2.2-->
+                <h2 class="card__heading heading-3 "><%= kindOfDay %>'s Plans</h2>
+
                 <!--Create a new list-->
                 <ul class="card__list">
                     <!--3.35-->
                     <% for(let i = 0; i < newitem.length; i++) {%>
                     <li class="card__item">
-                        <input type="checkbox">
-                        <p class="card__p"><%= newitem[i] %> </p>
+                        <input class="card__item-input" type="checkbox">
+                        <p class="card__p text"><%= newitem[i] %> </p>
                     </li>
                     <% } %>
                 </ul>
@@ -42,7 +43,6 @@
         </div>
 
     </div>
-
     <!--footer-->
     <%- include('footer'); -%>
 

@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    min-height: 46.6rem;
+    border-radius: 3rem;
+
+    box-shadow:
+        4px 4px 5px 0 rgba(0, 0, 0, 0.3),
+        -4px -4px 5px 0 rgba(255, 255, 255, .3);
+
+    &__list {
+        list-style-type: none;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &-input {
+            margin-right: 1.5rem;
+        }
+    }
+}
+
+.card__item-input:checked+p {
+    text-decoration: line-through;
+}
