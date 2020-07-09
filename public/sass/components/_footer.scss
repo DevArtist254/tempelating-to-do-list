@@ -1,0 +1,22 @@
+.footer {
+    padding: 4.7rem 7.2rem 2.4rem 7.2rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba($color:#ffffffff, $alpha: 0.5);
+
+    &__nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        list-style-type: none;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 2rem;
+    }
+}

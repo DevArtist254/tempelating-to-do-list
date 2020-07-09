@@ -15,7 +15,7 @@
     font-family: var(--fam-1);
     font-style: normal;
     font-weight: bold;
-    font-size: $fs-large;
+    font-size: $fs-largest;
     line-height: 9.4rem;
 }
 
@@ -41,4 +41,12 @@
     font-weight: normal;
     font-size: $fs-small;
     line-height: 3.3rem;
+}
+
+.btn-text {
+    font-family: var(--fam-2);
+    font-style: normal;
+    font-weight: normal;
+    font-size: $fs-medium;
+    line-height: 3.8rem;
 }
