@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Organiser</title>
+
+    <%- include('links'); -%>
+
+</head>
+
+<body class="container">
+
+    <%- include('nav'); -%>
+
+    <!--Hero Section-->
+
+    <div class="container__content">
+        <div class="container__content-form">
+            <!--this form helps use to collect data from the user-->
+            <form action="/" method="POST" class="form">
+                <h1 class="form__heading heading-1">
+                    plan your <br />
+                    day, <br />
+                    be better
+                </h1>
+                <input type="text" name="item" class="form__input" placeholder="Type here what will be doing today">
+                <label for="text" class="form__label">Type Here</label>
+                <button type="submit" name="button" class="form__btn"><span class="btn-text">+</span></button>
+            </form>
+        </div>
+
+        <div class="sect-hero__calender">
+            <span class="iconify" data-inline="false" data-icon="whh:notesdatealt"
+                style="color: #121211; font-size: 156px;"></span>
+        </div>
+    </div>
+
+    <%- include('footer'); -%>
+</body>
+
+</html>

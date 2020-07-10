@@ -5,6 +5,7 @@ const PORT = 3000
 const cors = require("cors")
 
 let items = []
+let title = ""
 
 //1.0
 const app = express()
@@ -20,8 +21,22 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(cors())
 
-//2.1
 app.get("/", (req, res) => {
+  res.render("index")
+})
+
+//i want the data i receive then send it to heading of the planner page
+app.post("/", (req, res) => {
+  let heading = req.body.item
+
+  title = `${heading}`
+
+  res.redirect("/list")
+  console.log(`${heading}`)
+})
+
+//2.1
+app.get("/list", (req, res) => {
   //2.2
   let days = new Date()
 
@@ -37,11 +52,12 @@ app.get("/", (req, res) => {
     kindOfDay: day,
     //3.34
     newitem: items,
+    heading: title,
   })
 })
 
 //3.1
-app.post("/", (req, res) => {
+app.post("/list", (req, res) => {
   //3.31
   let item = req.body.nameItem
 
@@ -49,7 +65,7 @@ app.post("/", (req, res) => {
   items.push(item)
 
   //3.33
-  res.redirect("/")
+  res.redirect("/list")
   console.log(item)
 })
 

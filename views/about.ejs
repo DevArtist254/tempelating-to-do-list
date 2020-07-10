@@ -7,14 +7,19 @@
     <title>About App</title>
 </head>
 
-<body>
+<%- include('links'); -%>
+
+<body class="container">
     <%- include('nav'); -%>
 
     <!--About section-->
-    <div class="sect-about">
+    <div class="container__about">
         <div class="about">
-            <h1 class="about__heading"></h1>
-            <p class="about__txt"></p>
+            <h1 class="about__heading">About Your Daily Planer</h1>
+            <p class="about__txt">
+                This app is built to help designers and developers plan their work and lives better <br>
+                hence improving their productivity
+            </p>
         </div>
         <div class="logo">
             <span class="iconify" data-inline="false" data-icon="clarity:checkbox-list-line"
