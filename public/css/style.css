@@ -122,7 +122,8 @@ html {
     font-weight: normal;
     font-size: 1.6rem;
     line-height: 3.3rem;
-    color: var(--color-lightest-dark);
+    color: var(--color-white);
+    text-shadow: 1px 1px white;
     transform: translateY(-7.6rem);
     transition: all .3s; }
   .form__input {
@@ -185,7 +186,7 @@ html {
       padding: 3.1rem 0 2.4rem 0;
       transition: all .5s; }
     .nav__list-link:hover, .nav__list-link:active {
-      color: inherit;
+      color: #ffffff;
       border-bottom: 2px solid var(--color-white); }
 
 .container {
@@ -213,3 +214,6 @@ html {
       margin-bottom: 1.7rem; }
   .container__footer {
     width: inherit; }
+
+.container__calender {
+  padding-top: 13rem; }
