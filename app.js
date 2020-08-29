@@ -15,30 +15,13 @@ const url = mongoose.connect(`${mongoUrl}/${dataBase}`, {
 
 //create a new schema for our database
 
-const headerSchema = new mongoose.Schema({
-  name: String,
-})
-
 const taskSchema = new mongoose.Schema({
   name: String,
 })
 
 //Creation of  model collections
 
-const Header = mongoose.model("header", headerSchema)
-
 const Task = mongoose.model("task", taskSchema)
-
-const task1 = new Task({
-  name: "write what you will be doing to ?",
-})
-
-const task2 = new Task({
-  name: "<-- delete your dane tasks here",
-})
-
-//store items in a variable
-let itemDefault = [task1, task2]
 
 //insert the default items into the database
 /**/
@@ -89,22 +72,7 @@ app.get("/list", (req, res) => {
   //future bugs the callback fn should be written n full
   //1. first find all the items in the array
   Task.find({}, function (err, tasks) {
-    //check to see whether  the array found has stuff
-    if (tasks.length === 0) {
-      //it doesn't add the default items
-      Task.insertMany(itemDefault, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log(`the default items were added`)
-        }
-      })
-      //After all  the default items have been added redirect them to the home page
-      res.redirect("/list")
-    } else {
-      //if it does render them
-      res.render("list", {kindOfDay: day, newitem: tasks, heading: title})
-    }
+    res.render("list", {kindOfDay: day, newitem: tasks, heading: title})
   })
 })
 
@@ -114,11 +82,28 @@ app.post("/list", (req, res) => {
   let item = req.body.nameItem
 
   //3.32
-  items.push(item)
+  const task = new Task({
+    name: item,
+  })
+
+  task.save()
 
   //3.33
   res.redirect("/list")
   console.log(item)
+})
+
+app.post("/Delete", (req, res) => {
+  const checkBoxId = req.body.checkbox
+
+  Task.findByIdAndRemove(checkBoxId, (err, doc) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(`the document was removed`)
+    }
+  })
+  res.redirect("/list")
 })
 
 //4
@@ -131,14 +116,3 @@ app.get("/about", (req, res) => {
 app.listen(PORT, () => {
   console.log(`DevArtist Server is runing on port ${PORT}`)
 })
-
-/**
- *  Task.find((err, tasks) => {
-    if (err) {
-     
-    } else {
-      //2.3,2.31,2.32
-      
-    }
-  })
- */
