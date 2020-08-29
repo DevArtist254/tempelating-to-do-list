@@ -122,3 +122,6 @@ See also the list of [contributors](https://github.com/kylelobo/The-Documentatio
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+    <!--<h2 class="card__heading heading-3 "><%= kindOfDay %>'s Plans</h2>-->
+                    <h1 class="heading-2 form__heading"><%= heading %> </h1>
+  <%= heading %>

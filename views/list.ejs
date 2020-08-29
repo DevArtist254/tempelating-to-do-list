@@ -30,16 +30,15 @@
             <div class="card">
                 <!--2.2-->
                 <h2 class="card__heading heading-3 "><%= kindOfDay %>'s Plans</h2>
-
                 <!--Create a new list-->
                 <ul class="card__list">
                     <!--3.35-->
-                    <% for(let i = 0; i < newitem.length; i++) {%>
+                    <%  newitem.forEach((el) => { %>
                     <li class="card__item">
                         <input class="card__item-input" type="checkbox">
-                        <p class="card__p text"><%= newitem[i] %> </p>
+                        <p class="card__p text"><%= el.name %> </p>
                     </li>
-                    <% } %>
+                    <% }) %>
                 </ul>
             </div>
         </div>

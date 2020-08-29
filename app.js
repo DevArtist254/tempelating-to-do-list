@@ -1,10 +1,48 @@
 //1.1
 const express = require("express")
 const bodyParser = require("body-parser")
+const mongoose = require("mongoose")
+const dataBase = "dailyOrganiserDB"
+const mongoUrl = "mongodb://localhost"
 const PORT = 3000
 const cors = require("cors")
 
-let items = []
+//connect to mongoose
+const url = mongoose.connect(`${mongoUrl}/${dataBase}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+
+//create a new schema for our database
+
+const headerSchema = new mongoose.Schema({
+  name: String,
+})
+
+const taskSchema = new mongoose.Schema({
+  name: String,
+})
+
+//Creation of  model collections
+
+const Header = mongoose.model("header", headerSchema)
+
+const Task = mongoose.model("task", taskSchema)
+
+const task1 = new Task({
+  name: "write what you will be doing to ?",
+})
+
+const task2 = new Task({
+  name: "<-- delete your dane tasks here",
+})
+
+//store items in a variable
+let itemDefault = [task1, task2]
+
+//insert the default items into the database
+/**/
+
 let title = ""
 
 //1.0
@@ -47,12 +85,26 @@ app.get("/list", (req, res) => {
 
   var day = days.toLocaleDateString("en-us", options)
 
-  //2.3,2.31,2.32
-  res.render("list", {
-    kindOfDay: day,
-    //3.34
-    newitem: items,
-    heading: title,
+  //3.34
+  //future bugs the callback fn should be written n full
+  //1. first find all the items in the array
+  Task.find({}, function (err, tasks) {
+    //check to see whether  the array found has stuff
+    if (tasks.length === 0) {
+      //it doesn't add the default items
+      Task.insertMany(itemDefault, (err) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(`the default items were added`)
+        }
+      })
+      //After all  the default items have been added redirect them to the home page
+      res.redirect("/list")
+    } else {
+      //if it does render them
+      res.render("list", {kindOfDay: day, newitem: tasks, heading: title})
+    }
   })
 })
 
@@ -79,3 +131,14 @@ app.get("/about", (req, res) => {
 app.listen(PORT, () => {
   console.log(`DevArtist Server is runing on port ${PORT}`)
 })
+
+/**
+ *  Task.find((err, tasks) => {
+    if (err) {
+     
+    } else {
+      //2.3,2.31,2.32
+      
+    }
+  })
+ */
