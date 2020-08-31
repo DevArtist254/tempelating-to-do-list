@@ -1,8 +1,4 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 12rem;
 
     &__label {
         font-family: var(--fam-2);
@@ -18,13 +14,18 @@
         transition: all .3s;
     }
 
+    &__inputArea {
+        display: flex;
+        flex-direction: row;
+    }
+
     &__input {
-        margin-top: 5.4rem;
+        margin-top: 10%;
         width: 36.6rem;
         height: 6rem;
-        background-color: var(--color-lighter-dark);
-        border-radius: 0px 0px 3rem 0px;
         border: none;
+        background-color: transparent;
+        border-bottom: 5px solid var(--color-lighter-dark);
 
         font-family: var(--fam-2);
         font-style: normal;
@@ -36,7 +37,8 @@
 
         &:focus {
             outline: none;
-            background-color: var(--color-lighter-dark);
+            background-color: transparent;
+            border-bottom: 5px solid var(--color-lighter-dark);
         }
     }
 
@@ -49,9 +51,10 @@
 
 
     &__btn {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 3rem;
+        margin-top: 7%;
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 2.5rem;
         border: none;
         color: black;
         background-color: var(--color-lightest-dark);

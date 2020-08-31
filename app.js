@@ -19,9 +19,16 @@ const taskSchema = new mongoose.Schema({
   name: String,
 })
 
+const topicSchema = new mongoose.Schema({
+  name: String,
+  list: [taskSchema],
+})
+
 //Creation of  model collections
 
 const Task = mongoose.model("task", taskSchema)
+
+const Topic = mongoose.model("topic", topicSchema)
 
 //insert the default items into the database
 /**/
@@ -109,6 +116,27 @@ app.post("/Delete", (req, res) => {
 //4
 app.get("/about", (req, res) => {
   res.render("about")
+})
+
+app.get("/:topic", (req, res) => {
+  const topic = req.body.params.topic
+
+  Topic.findOne({name: topic}, function (err, foundTopic) {
+    if (!err) {
+      if (!foundTopic) {
+        const newTopic = new Topic({
+          name: topic,
+          tasks: [],
+        })
+
+        newTopic.save()
+
+        res.redirect("/" + topic)
+      } else {
+        res.render("list", {heading: foundTopic.name, newitem: foundTopic.list})
+      }
+    }
+  })
 })
 
 //1.2

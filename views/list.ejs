@@ -18,9 +18,11 @@
             <!--this form helps use to collect data from the user-->
             <form action="/list" method="POST" class="form">
                 <h1 class="heading-2 form__heading"><%= heading %> </h1>
-                <input type="text" name="nameItem" class="form__input" placeholder="Type Here">
-                <label for="text" class="form__label">Type Here</label>
-                <button type="submit" name="button" class="form__btn"><span class="btn-text">+</span></button>
+                <div class="form__inputArea">
+                    <input type="text" name="nameItem" class="form__input" placeholder="Type Here">
+                    <label for="text" class="form__label">Type Here</label>
+                    <button type="submit" name="button" class="form__btn"><span class="btn-text">+</span></button>
+                </div>
             </form>
         </div>
 

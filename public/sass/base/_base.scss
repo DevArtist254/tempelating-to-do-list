@@ -7,9 +7,15 @@
 }
 
 html {
-    font-size: 62%;
-    background-image: url(img/Rectangle-6.jpg);
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url(svg/Rectangle-5.svg);
     //width height
-    background-size: 61% 115%;
+    background-size: 70% 100%;
     background-repeat: no-repeat;
 }
