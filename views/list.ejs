@@ -16,7 +16,7 @@
     <div class="container__content">
         <div class="container__content-form">
             <!--this form helps use to collect data from the user-->
-            <form action="/list" method="POST" class="form">
+            <form action="/list" method="GET" class="form">
                 <h1 class="heading-2 form__heading"><%= heading %> </h1>
                 <div class="form__inputArea">
                     <input type="text" name="nameItem" class="form__input" placeholder="Type Here">
@@ -42,7 +42,7 @@
                             <input class="card__item-input" type="checkbox" name="checkbox" value='<%= el._id %>'
                                 onchange="this.form.submit()">
                             <p class="card__p text"><%= el.name %> </p>
-
+                            <!--<input type='hidden' name='checkedTack' value='<%= topicName %>'></input>-->
                         </li>
                     </form>
                     <% }) %>

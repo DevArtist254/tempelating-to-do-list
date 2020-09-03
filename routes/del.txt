@@ -1,0 +1,123 @@
+app.get("/", (req, res) => {
+    res.render("index")
+  })
+
+  //i want the data i receive then send it to heading of the planner page
+  app.post("/", (req, res) => {
+    let heading = req.body.item
+
+    title = `${heading}`
+
+    res.redirect("/list")
+    console.log(`${heading}`)
+  })
+
+  //2.1
+  app.get("/list", (req, res) => {
+    
+    //3.34
+    //future bugs the callback fn should be written n full
+    //1. first find all the items in the array
+    Task.find({}, function (err, tasks) {
+      res.render("list", {kindOfDay: day, newitem: tasks, heading: title})
+    })
+  })
+
+  //3.1
+  app.post("/list", (req, res) => {
+    //3.31
+    let item = req.body.nameItem
+
+    //3.32
+    const task = new Task({
+      name: item,
+    })
+
+    task.save()
+
+    //3.33
+    res.redirect("/list")
+    console.log(item)
+  })
+
+  app.post("/Delete", (req, res) => {
+    const checkBoxId = req.body.checkbox
+
+    Task.findByIdAndRemove(checkBoxId, (err, doc) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(`the document was removed`)
+      }
+    })
+    res.redirect("/list")
+  })
+
+  //4
+  app.get("/about", (req, res) => {
+    res.render("about")
+  })
+app.get("/:topic", (req, res) => {
+  const topic = req.params.topic
+
+  console.log(topic)
+  Topic.findOne({name: topic}, function (err, foundTopic) {
+    if (!err) {
+      if (!foundTopic) {
+        const newTopic = new Topic({
+          name: topic,
+          tasks: [],
+        })
+
+        newTopic.save()
+
+        res.redirect("/" + topic)
+      } else {
+        res.render("list", {heading: foundTopic.name, newitem: foundTopic.list})
+      }
+    }
+  })
+})
+
+//addtion of a new list item
+app.post("/", (require, response) => {
+  //take the required items from the list
+  const items = require.body.newitem
+  const topicName = require.body.heading
+
+  //adding that new list item
+
+  const item = new Task({
+    name = items
+  })
+
+  //check it  does not match with the default name
+  if(topicName === defaultName){
+
+    //Save the new item
+    item.save()
+    // send it to the topic name
+    response.redirect('/' + topicName)
+  }else {
+    //else search for the items in the database and add the new items into the found topic
+ Topic.findOne({name : topicName} , (err, foundDoc) => {
+  if(!err){
+    foundDoc.list.push(item)
+
+    foundDoc.save()
+
+    response.redirect('/' + topicName)
+  }
+})
+
+  }
+})
+
+deletion of a specific product
+
+app.post("/delete", (req, res) => {
+  //take data that is checked by user
+  const checkBoxId = req.body.checkbox
+  //take also the task name that is checked by the user
+  const taskName = req.body.topicName
+})
