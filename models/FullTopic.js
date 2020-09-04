@@ -5,7 +5,7 @@ var Schema = mongoose.Schema
 const topicSchema = new mongoose.Schema({
   heading: String,
   taskList: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.Array,
     ref: "task",
   },
 })

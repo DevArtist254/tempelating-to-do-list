@@ -13,42 +13,44 @@
     <!--navigation-->
     <%- include('nav'); -%>
 
-    <div class="container__content">
-        <div class="container__content-form">
-            <!--this form helps use to collect data from the user-->
-            <form action="/list" method="GET" class="form">
-                <h1 class="heading-2 form__heading"><%= heading %> </h1>
+    <form action="/list" method="GET" class="form">
+        <div class="container__content">
+            <div class="container__content-form">
+                <!--this form helps use to collect data from the user-->
+
+                <h1 class="heading-2 form__heading"><%= heading %></h1>
                 <div class="form__inputArea">
                     <input type="text" name="nameItem" class="form__input" placeholder="Type Here">
                     <label for="text" class="form__label">Type Here</label>
                     <button type="submit" name="button" class="form__btn"><span class="btn-text">+</span></button>
                 </div>
-            </form>
-        </div>
 
-        <!--to do list-->
-
-        <div class="container__content-card">
-            <div class="card">
-                <!--2.2-->
-                <h2 class="card__heading heading-3 "><%= kindOfDay %>'s Plans</h2>
-                <!--Create a new list-->
-                <ul class="card__list">
-
-                    <!--3.35-->
-                    <%  newitem.forEach((el) => { %>
-                    <form method="POST" action="/Delete">
-                        <li class="card__item">
-                            <input class="card__item-input" type="checkbox" name="checkbox" value='<%= el._id %>'
-                                onchange="this.form.submit()">
-                            <p class="card__p text"><%= el.name %> </p>
-                            <!--<input type='hidden' name='checkedTack' value='<%= topicName %>'></input>-->
-                        </li>
-                    </form>
-                    <% }) %>
-                </ul>
             </div>
-        </div>
+
+            <!--to do list-->
+
+            <div class="container__content-card">
+                <div class="card">
+                    <!--2.2-->
+                    <h2 class="card__heading heading-3 ">'s Plans</h2>
+                    <!--Create a new list-->
+                    <ul class="card__list">
+
+                        <!--3.35-->
+
+                        <form method="POST" action="/Delete">
+                            <li class="card__item">
+                                <input class="card__item-input" type="checkbox" name="checkbox" value=''
+                                    onchange="this.form.submit()">
+                                <p class="card__p text"> </p>
+
+                            </li>
+                        </form>
+
+                    </ul>
+                </div>
+            </div>
+    </form>
 
     </div>
     <!--footer-->

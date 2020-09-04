@@ -121,3 +121,33 @@ app.post("/delete", (req, res) => {
   //take also the task name that is checked by the user
   const taskName = req.body.topicName
 })
+
+<!--
+    <%= heading %>
+    <%  newitem.forEach((el) => { %>
+        <%= el.name %>
+        <%= el._id %>
+        <!--<input type='hidden' name='checkedTack' value='<%= topicName %>'></input>-->
+        <% }) %>
+        <%= kindOfDay %>
+-->
+try {
+    
+    }
+  } catch (error) {
+    console.log(error)
+  }
+ 
+    }
+    
+    }
+     // FullTopic.findOne({heading: "Today's Goals"}, (err, results) => {
+  //   if (!err) {
+  //     if (!results) {
+  //       console.log(results)
+  //       res.redirect("/")
+  //     } else {
+  //       res.render("list", {heading: results.heading, tasks: results.taskList})
+  //     }
+  //   }
+  // })

@@ -6,6 +6,10 @@ const PORT = 3000
 const connectDB = require("./config/db")
 const cors = require("cors")
 
+const FullTopic = require("./models/FullTopic")
+const Task = require("./models/Tasks")
+const {render} = require("ejs")
+
 //1.0
 const app = express()
 
@@ -27,7 +31,61 @@ app.get("/", async (req, res) => {
   res.render("index")
 })
 
-app.get("/list", async (req, res) => {
+app.post("/", async (req, res) => {
+  const heading = req.body.heading
+  let defaultList = []
+
+  if (heading === "") {
+    //deafault item
+    const defaultHeading = "Today's Goals"
+
+    //insert the new header
+    const topic = new FullTopic({
+      heading: defaultHeading,
+      taskList: defaultList,
+    })
+
+    FullTopic.findOne({heading: defaultHeading}, (err, foundTopic) => {
+      if (!err) {
+        if (!foundTopic) {
+          //save the default item
+          topic.save()
+
+          res.redirect("/list")
+        } else {
+          res.render("list", {
+            heading: foundTopic.heading,
+            tasks: foundTopic.taskList,
+          })
+        }
+      }
+    })
+  } else {
+    //insert the new header
+    const topic = new FullTopic({
+      heading: heading,
+      taskList: defaultList,
+    })
+
+    FullTopic.findOne({heading: heading}, (err, foundTopic) => {
+      if (!err) {
+        if (!foundTopic) {
+          //save the default item
+          topic.save()
+
+          res.redirect("/list")
+        } else {
+          res.render("list", {
+            heading: foundTopic.heading,
+            tasks: foundTopic.taskList,
+          })
+        }
+      }
+    })
+  }
+})
+
+app.get("/list", (req, res) => {
   res.render("list")
 })
 
@@ -35,12 +93,6 @@ app.get("about", async (req, res) => {
   res.render("about")
 })
 
-// Define Routes
-//use takes in the params to define the routes for the apis
-//1st "/api/users" for http://localhost:3000/tasks
-//2nd require("./tasks") for the data
-app.use("/tasks", require("./routes/tasks"))
-app.use("/fullTopic", require("./routes/fullTopic"))
 //1.2
 //1.21
 app.listen(PORT, () => {

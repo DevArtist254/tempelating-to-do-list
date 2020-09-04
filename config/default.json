@@ -1,5 +1,5 @@
 {
     "mongoURI": "",
-    "mongoLocalURI": "mongodb://localhost/dailyTasksDB",
+    "mongoLocalURI": "mongodb://localhost/dailyOrganiserDB",
     "jwtSecret": "GetFromWeb"
 }
