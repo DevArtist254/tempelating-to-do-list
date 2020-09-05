@@ -8,7 +8,6 @@ const cors = require("cors")
 
 const FullTopic = require("./models/FullTopic")
 const Task = require("./models/Tasks")
-const {render} = require("ejs")
 
 //1.0
 const app = express()
@@ -27,12 +26,29 @@ app.use(cors())
 //Connect Database
 connectDB()
 
+//create a string to pass into the title when the body is saved
+let title = ""
+
 app.get("/", async (req, res) => {
   res.render("index")
 })
 
+app.get("/list", (req, res) => {
+  Time
+
+  //looking for topic that was submited on input
+  FullTopic.findOne({heading: title}, (err, foundTopic) => {
+    if (!err) {
+      res.render("list", {
+        heading: foundTopic.heading,
+        tasks: foundTopic.taskList,
+      })
+    }
+  })
+})
+
 app.post("/", async (req, res) => {
-  const heading = req.body.heading
+  const heading = await req.body.heading
   let defaultList = []
 
   if (heading === "") {
@@ -51,6 +67,7 @@ app.post("/", async (req, res) => {
           //save the default item
           topic.save()
 
+          title = defaultHeading
           res.redirect("/list")
         } else {
           res.render("list", {
@@ -73,6 +90,7 @@ app.post("/", async (req, res) => {
           //save the default item
           topic.save()
 
+          title = heading
           res.redirect("/list")
         } else {
           res.render("list", {
@@ -83,10 +101,6 @@ app.post("/", async (req, res) => {
       }
     })
   }
-})
-
-app.get("/list", (req, res) => {
-  res.render("list")
 })
 
 app.get("about", async (req, res) => {
