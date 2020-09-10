@@ -13,17 +13,17 @@
     <!--navigation-->
     <%- include('nav'); -%>
 
-    <form action="/list" method="GET" class="form">
+    <form action="/list" method="GET"  class="form">
         <div class="container__content">
             <div class="container__content-form">
                 <!--this form helps use to collect data from the user-->
 
                 <h1 class="heading-2 form__heading"><%= heading %></h1>
-                <div class="form__inputArea">
+                <form method="POST" action="/list" class="form__inputArea">
                     <input type="text" name="nameItem" class="form__input" placeholder="Type Here">
                     <label for="text" class="form__label">Type Here</label>
                     <button type="submit" name="button" class="form__btn"><span class="btn-text">+</span></button>
-                </div>
+                </form>
 
             </div>
 
@@ -32,7 +32,11 @@
             <div class="container__content-card">
                 <div class="card">
                     <!--2.2-->
-                    <h2 class="card__heading heading-3 ">'s Plans</h2>
+                        <h2 class="card__heading heading-3 ">
+                            <%let days = new Date() %>
+                            <%let today = days.toLocaleDateString("en-us", {weekday: "long"})%>
+                            <%= today %>'s Plans
+                        </h2>
                     <!--Create a new list-->
                     <ul class="card__list">
 

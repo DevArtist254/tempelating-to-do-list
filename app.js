@@ -8,6 +8,7 @@ const cors = require("cors")
 
 const FullTopic = require("./models/FullTopic")
 const Task = require("./models/Tasks")
+const Time = require("./models/Time")
 
 //1.0
 const app = express()
@@ -34,8 +35,6 @@ app.get("/", async (req, res) => {
 })
 
 app.get("/list", (req, res) => {
-  Time
-
   //looking for topic that was submited on input
   FullTopic.findOne({heading: title}, (err, foundTopic) => {
     if (!err) {
@@ -103,7 +102,11 @@ app.post("/", async (req, res) => {
   }
 })
 
-app.get("about", async (req, res) => {
+app.post("/list", (req, res) => {
+  console.log(req.body.nameItem)
+})
+
+app.get("/about", async (req, res) => {
   res.render("about")
 })
 
