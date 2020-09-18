@@ -27,89 +27,64 @@ app.use(cors())
 //Connect Database
 connectDB()
 
-//create a string to pass into the title when the body is saved
-let title = ""
-
-app.get("/", async (req, res) => {
+////////////////////////////////Updating the  entire doc //////////////
+app.get("/", (req, res) => {
   res.render("index")
 })
 
-app.get("/list", (req, res) => {
-  //looking for topic that was submited on input
-  FullTopic.findOne({heading: title}, (err, foundTopic) => {
+/////////////////////////Query search conversion//////////////////
+
+app.post("/", async (req, res) => {
+  //1. user enters data
+  const stringData = await req.body.heading
+
+  //2. conversion to the string to URL stands with a function which returns an output
+  const urlString = encodeURIComponent(stringData)
+
+  res.redirect(`/list/` + urlString)
+})
+
+/////////////////////////Topic /////////////////////
+
+app.get("/list/:topic", (req, res) => {
+  const topic = req.params.topic
+  const defaultList = [
+    "your items will appear here",
+    "<-- They can be deleted here",
+  ]
+
+  //console.log(topic)
+  FullTopic.findOne({heading: topic}, (err, foundList) => {
     if (!err) {
-      res.render("list", {
-        heading: foundTopic.heading,
-        tasks: foundTopic.taskList,
-      })
+      if (!foundList) {
+        //if the is no such doc we should create a new one and save it in the database
+        const filledList = new FullTopic({
+          heading: topic,
+          taskList: defaultList,
+        })
+
+        filledList.save()
+
+        res.redirect("/list/" + topic)
+      } else {
+        //if the is such a list then render list with the info from the docs
+        res.render("list", {
+          heading: foundList.heading,
+          list: foundList.taskList,
+        })
+      }
+    } else {
+      console.log(err)
     }
   })
 })
 
-app.post("/", async (req, res) => {
-  const heading = await req.body.heading
-  let defaultList = []
+//
 
-  if (heading === "") {
-    //deafault item
-    const defaultHeading = "Today's Goals"
-
-    //insert the new header
-    const topic = new FullTopic({
-      heading: defaultHeading,
-      taskList: defaultList,
-    })
-
-    FullTopic.findOne({heading: defaultHeading}, (err, foundTopic) => {
-      if (!err) {
-        if (!foundTopic) {
-          //save the default item
-          topic.save()
-
-          title = defaultHeading
-          res.redirect("/list")
-        } else {
-          res.render("list", {
-            heading: foundTopic.heading,
-            tasks: foundTopic.taskList,
-          })
-        }
-      }
-    })
-  } else {
-    //insert the new header
-    const topic = new FullTopic({
-      heading: heading,
-      taskList: defaultList,
-    })
-
-    FullTopic.findOne({heading: heading}, (err, foundTopic) => {
-      if (!err) {
-        if (!foundTopic) {
-          //save the default item
-          topic.save()
-
-          title = heading
-          res.redirect("/list")
-        } else {
-          res.render("list", {
-            heading: foundTopic.heading,
-            tasks: foundTopic.taskList,
-          })
-        }
-      }
-    })
-  }
-})
-
-app.post("/list", (req, res) => {
-  console.log(req.body.nameItem)
-})
-
-app.get("/about", async (req, res) => {
+////////////////////////////About/////////////////
+app.get("/about", (req, res) => {
   res.render("about")
 })
-
 //1.2
 //1.21
 app.listen(PORT, () => {

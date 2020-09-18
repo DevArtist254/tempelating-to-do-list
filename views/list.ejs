@@ -13,7 +13,7 @@
     <!--navigation-->
     <%- include('nav'); -%>
 
-    <form action="/list" method="GET"  class="form">
+    <form action="/list/:topic" method="GET" class="form">
         <div class="container__content">
             <div class="container__content-form">
                 <!--this form helps use to collect data from the user-->
@@ -32,25 +32,24 @@
             <div class="container__content-card">
                 <div class="card">
                     <!--2.2-->
-                        <h2 class="card__heading heading-3 ">
-                            <%let days = new Date() %>
-                            <%let today = days.toLocaleDateString("en-us", {weekday: "long"})%>
-                            <%= today %>'s Plans
-                        </h2>
+                    <h2 class="card__heading heading-3 ">
+                        <%let days = new Date() %>
+                        <%let today = days.toLocaleDateString("en-us", {weekday: "long"})%>
+                        <%= today %>'s Plans
+                    </h2>
                     <!--Create a new list-->
                     <ul class="card__list">
 
                         <!--3.35-->
-
+                        <%list.forEach(element => {%>
                         <form method="POST" action="/Delete">
                             <li class="card__item">
                                 <input class="card__item-input" type="checkbox" name="checkbox" value=''
                                     onchange="this.form.submit()">
-                                <p class="card__p text"> </p>
-
+                                <p class="card__p text"><%= element %> </p>
                             </li>
                         </form>
-
+                        <% });%>
                     </ul>
                 </div>
             </div>
